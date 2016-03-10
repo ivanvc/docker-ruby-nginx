@@ -12,7 +12,7 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 COPY files/nginx.conf /etc/nginx/nginx.conf
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 22 80
+EXPOSE 80
 
 RUN addgroup --gid 9999 app \
 	&& adduser --uid 9999 --gid 9999 --disabled-password --gecos "Application" app \
