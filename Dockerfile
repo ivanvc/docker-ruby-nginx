@@ -11,7 +11,7 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 	&& rm -rf /etc/nginx/conf.d/*
 
 COPY files/nginx.conf /etc/nginx/nginx.conf
-COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 80
 
@@ -21,8 +21,5 @@ RUN addgroup --gid 9999 app \
 	&& mkdir -p /home/app/.ssh \
 	&& chmod 700 /home/app/.ssh \
 	&& chown app:app /home/app/.ssh
-
-RUN echo "/usr/sbin/nginx -c /etc/nginx/nginx.conf" > /home/app/nginx \
-	&& chmod +x /home/app/nginx
 
 CMD ["/usr/bin/supervisord"]
