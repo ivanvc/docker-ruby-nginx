@@ -7,7 +7,8 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 	&& echo "deb http://nginx.org/packages/debian/ jessie nginx" >> /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get install -y ca-certificates nginx=${NGINX_VERSION} gettext-base supervisor \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /etc/nginx/conf.d/*
 
 COPY files/nginx.conf /etc/nginx/nginx.conf
 COPY files/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
